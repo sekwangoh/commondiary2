@@ -1,0 +1,60 @@
+<h1>Post</h1>
+<p>
+  <strong>User :</strong>
+  <%= @post.user.email %>
+</p>
+<p>
+  <strong>Title : </strong>
+  <%= @post.title %>
+</p>
+<p>
+  <strong> plan : </strong>
+  <%= @post.plan %>
+</p>
+<p>
+  <strong> research : </strong>
+  <%= @post.research %>
+</p>
+<p>
+  <strong> act : </strong>
+  <%= @post.act %>
+</p>
+<p>
+  <strong> observe: </strong>
+  <%= @post.observe %>
+</p>
+<p>
+  <strong> evaluate : </strong>
+  <%= @post.evaluate %>
+</p>
+<p>
+  <strong> reflect: </strong>
+  <%= @post.reflect %>
+</p>
+
+<h2>Comment</h2>
+<% @post.comments.each do |comment| %>
+  <p>
+    <strong>User:</strong>
+    <%= comment.user.email %>
+  </p>
+  <p>
+    <strong>Content</strong>
+    <%= comment.content %>
+  </p>
+  <%= link_to "삭제하기", post_comment_path([comment.post,comment]), method: :delete %>
+<% end %>
+
+
+<h2>Add Comment</h2>
+<%= form_for ([@post, @post.comments.build]) do |f| %>
+ <p>
+   <%= f.label :content %>
+   <%= f.text_area :content %>
+ </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to '뒤로가기', posts_path %>

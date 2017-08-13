@@ -1,0 +1,29 @@
+<h1>Listing posts</h1>
+<table>
+  <th>Title</th>
+  <th>Plan</th>
+  <th>Research</th>
+  <th>Act</th>
+  <th>Observe</th>
+  <th>Evaluate</th>
+  <th>Reflect</th>
+
+
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.plan %></td>
+      <td><%= post.research %></td>
+      <td><%= post.act %></td>
+      <td><%= post.observe %></td>
+      <td><%= post.evaluate %></td>
+      <td><%= post.reflect %></td>
+      <td><%= link_to '글보기', post_path(post) %></td>
+      <td><%= link_to '수정하기', edit_post_path(post) %></td>
+      <td><%= link_to '삭제하기', post_path(post), method: :delete,
+                                                data: { confirm: 'Are you sure?'}%></td>
+    </tr>
+
+  <% end %>
+
+</table>
